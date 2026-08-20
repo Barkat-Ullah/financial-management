@@ -1,5 +1,13 @@
+import WhyChooseUs from "./pages/WhyChoose";
+import HowItWorks from "./pages/HowWorks";
+import Features from "./pages/Features";
+
 const HomePage = () => {
-    return <div className="text-center my-2">HomePage</div>;
+    return <>
+        <WhyChooseUs />
+        <HowItWorks />
+        <Features />
+    </>;
 };
 
 export default HomePage;
