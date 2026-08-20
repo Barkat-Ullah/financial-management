@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { Target, Wallet, TrendingUp, CheckCircle2, ArrowUpRight, Zap, Sparkles } from "lucide-react";
 
@@ -12,7 +13,8 @@ export default function HowItWorks02Velara({ className }: { className?: string }
             <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
             <section
-                className={"bg-black py-[90px] px-6 md:px-[60px] font-['Inter',_sans-serif] relative overflow-hidden " + (className || "")}
+                id="how-it-works"
+                className={"bg-black py-[90px] px-6 md:px-[60px] font-['Inter',_sans-serif] relative overflow-hidden scroll-mt-20 " + (className || "")}
             >
                 {/* BACKGROUND ACCENTS */}
                 <div className="absolute top-0 left-0 w-full h-full pointer-events-none overflow-hidden">
@@ -69,9 +71,12 @@ export default function HowItWorks02Velara({ className }: { className?: string }
                                                 Password
                                             </div>
                                         </div>
-                                        <button className="w-full bg-[#A855F7] text-[#ffffff] rounded-[12px] py-3.5 text-[15px] font-bold border-none hover:brightness-110 active:scale-[0.98] transition-all">
+                                        <Link
+                                            href="/signup"
+                                            className="w-full text-center block bg-[#A855F7] text-[#ffffff] rounded-[12px] py-3.5 text-[15px] font-bold border-none hover:brightness-110 active:scale-[0.98] transition-all shadow-lg shadow-purple-600/30"
+                                        >
                                             Get Started
-                                        </button>
+                                        </Link>
                                     </div>
                                 </div>
                             </div>

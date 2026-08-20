@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { Zap, Rocket, Building2 } from "lucide-react";
 
@@ -20,7 +21,11 @@ export default function Pricing({ className }: { className?: string }) {
       <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" crossOrigin="anonymous" />
 
-      <section className={"bg-black pt-[96px] pb-[160px] px-6 md:px-[60px] relative overflow-hidden " + (className || "")} style={{ fontFamily: "'Inter', sans-serif" }}>
+      <section
+        id="pricing"
+        className={"bg-black pt-[96px] pb-[160px] px-6 md:px-[60px] relative overflow-hidden scroll-mt-20 " + (className || "")}
+        style={{ fontFamily: "'Inter', sans-serif" }}
+      >
         {/* Ambient Glow */}
         <div className="absolute top-0 left-0 w-full h-full pointer-events-none">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#A855F7]/5 blur-[120px] rounded-full" />
@@ -95,12 +100,18 @@ export default function Pricing({ className }: { className?: string }) {
                 Small-sized Teams of up to 20 employees
               </p>
 
-              <button className="bg-white text-black rounded-full py-[14px] px-[20px] w-full text-[15px] font-semibold border-none cursor-pointer mb-[12px] hover:bg-white/90 transition-all hover:scale-[1.02] active:scale-[0.98]">
+              <Link
+                href="/signup"
+                className="bg-white text-black text-center rounded-full py-[14px] px-[20px] w-full text-[15px] font-semibold border-none cursor-pointer mb-[12px] hover:bg-white/90 transition-all hover:scale-[1.02] active:scale-[0.98]"
+              >
                 Get Started
-              </button>
-              <button className="bg-transparent text-white/80 border border-white/10 rounded-full py-[13px] px-[20px] w-full text-[15px] font-medium cursor-pointer hover:bg-white/5 hover:border-white/20 transition-all">
+              </Link>
+              <Link
+                href="/login"
+                className="bg-transparent text-white/80 text-center border border-white/10 rounded-full py-[13px] px-[20px] w-full text-[15px] font-medium cursor-pointer hover:bg-white/5 hover:border-white/20 transition-all"
+              >
                 Chat to sales
-              </button>
+              </Link>
 
               <div className="h-[1px] bg-white/5 my-[32px]" />
 
@@ -150,12 +161,18 @@ export default function Pricing({ className }: { className?: string }) {
                 Medium-sized businesses 100 employees
               </p>
 
-              <button className="bg-[#A855F7] text-white rounded-full py-[14px] px-[20px] w-full text-[15px] font-semibold border-none cursor-pointer mb-[12px] hover:bg-[#9333EA] transition-all hover:scale-[1.02] active:scale-[0.98]">
+              <Link
+                href="/signup"
+                className="bg-[#A855F7] text-white text-center rounded-full py-[14px] px-[20px] w-full text-[15px] font-semibold border-none cursor-pointer mb-[12px] hover:bg-[#9333EA] transition-all hover:scale-[1.02] active:scale-[0.98] shadow-lg shadow-purple-600/30"
+              >
                 Get Started
-              </button>
-              <button className="bg-transparent text-white/80 border border-white/10 rounded-full py-[13px] px-[20px] w-full text-[15px] font-medium cursor-pointer hover:bg-white/5 hover:border-white/20 transition-all">
+              </Link>
+              <Link
+                href="/login"
+                className="bg-transparent text-white/80 text-center border border-white/10 rounded-full py-[13px] px-[20px] w-full text-[15px] font-medium cursor-pointer hover:bg-white/5 hover:border-white/20 transition-all"
+              >
                 Chat to sales
-              </button>
+              </Link>
 
               <div className="h-[1px] bg-white/5 my-[32px]" />
 
@@ -201,12 +218,18 @@ export default function Pricing({ className }: { className?: string }) {
                 Large corporations (200+ employees)
               </p>
 
-              <button className="bg-white text-black rounded-full py-[14px] px-[20px] w-full text-[15px] font-semibold border-none cursor-pointer mb-[12px] hover:bg-white/90 transition-all hover:scale-[1.02] active:scale-[0.98]">
+              <Link
+                href="/signup"
+                className="bg-white text-black text-center rounded-full py-[14px] px-[20px] w-full text-[15px] font-semibold border-none cursor-pointer mb-[12px] hover:bg-white/90 transition-all hover:scale-[1.02] active:scale-[0.98]"
+              >
                 Get Started
-              </button>
-              <button className="bg-transparent text-white/80 border border-white/10 rounded-full py-[13px] px-[20px] w-full text-[15px] font-medium cursor-pointer hover:bg-white/5 hover:border-white/20 transition-all">
+              </Link>
+              <Link
+                href="/login"
+                className="bg-transparent text-white/80 text-center border border-white/10 rounded-full py-[13px] px-[20px] w-full text-[15px] font-medium cursor-pointer hover:bg-white/5 hover:border-white/20 transition-all"
+              >
                 Chat to sales
-              </button>
+              </Link>
 
               <div className="h-[1px] bg-white/5 my-[32px]" />
 

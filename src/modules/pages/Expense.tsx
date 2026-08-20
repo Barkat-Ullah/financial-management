@@ -8,9 +8,10 @@ export default function Expense({ className }: { className?: string }) {
     <>
       <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-
-      <section className={"font-['Inter',_sans-serif] selection:bg-[#A855F7]/30 bg-black py-[96px] px-6 md:px-[60px] relative overflow-hidden " + (className || "")}>
+      <section
+        id="security"
+        className={"font-['Inter',_sans-serif] selection:bg-[#A855F7]/30 bg-black py-[96px] px-6 md:px-[60px] relative overflow-hidden scroll-mt-20 " + (className || "")}
+      >
         {/* Background Ambient Glows */}
         <div className="absolute top-0 left-0 w-full h-full pointer-events-none overflow-hidden">
           <div className="absolute top-[-10%] right-[10%] w-[40%] h-[40%] bg-[#A855F7]/10 blur-[120px] rounded-full" />

@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "ApexFinance - Next.js & Tailwind & Framer Motion Dashboard",
-  description: "Next.js application configured with Tailwind CSS, Framer Motion, and src/ architecture.",
+  title: "Velara AI — Next-Gen AI Wealth & Financial Intelligence Platform",
+  description: "Manage global money transfers, crypto portfolio staking, cashflow intelligence, and predictive expense budgets with Velara AI.",
 };
 
 export default function RootLayout({

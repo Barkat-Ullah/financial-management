@@ -2,9 +2,20 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { Bell, Search, ShieldCheck, Wallet, ChevronDown, LogOut, ArrowLeft, User } from "lucide-react";
+import {
+  Bell,
+  Search,
+  ShieldCheck,
+  TrendingUp,
+  ChevronDown,
+  LogOut,
+  ArrowLeft,
+  User,
+  Sparkles,
+} from "lucide-react";
 
 export default function Navbar() {
   const [hasNotifications, setHasNotifications] = useState(true);
@@ -16,7 +27,7 @@ export default function Navbar() {
   };
 
   return (
-    <header className="sticky top-0 z-40 w-full border-b border-slate-800/80 bg-slate-950/70 backdrop-blur-xl">
+    <header className="sticky top-0 z-40 w-full border-b border-white/10 bg-[#090d16]/80 backdrop-blur-xl">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         {/* Brand / Logo */}
         <div className="flex items-center gap-3">
@@ -24,20 +35,20 @@ export default function Navbar() {
             <motion.div
               whileHover={{ rotate: 10, scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-tr from-indigo-600 via-indigo-500 to-purple-500 shadow-lg shadow-indigo-500/25"
+              className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-tr from-[#A855F7] via-[#9333ea] to-[#7E22CE] shadow-lg shadow-purple-600/30 text-white"
             >
-              <Wallet className="h-5 w-5 text-white" />
+              <TrendingUp className="h-5 w-5" />
             </motion.div>
             <div>
               <div className="flex items-center gap-1.5">
-                <span className="font-bold text-lg tracking-tight text-white group-hover:text-indigo-400 transition-colors">
-                  ApexFinance
+                <span className="font-extrabold text-lg tracking-tight text-white group-hover:text-[#c084fc] transition-colors">
+                  Velara AI
                 </span>
-                <span className="rounded-full bg-indigo-500/10 px-2 py-0.5 text-[10px] font-semibold text-indigo-400 border border-indigo-500/20">
+                <span className="rounded-full bg-[#A855F7]/15 px-2 py-0.5 text-[10px] font-bold text-[#c084fc] border border-[#A855F7]/30">
                   PRO
                 </span>
               </div>
-              <p className="text-xs text-slate-400 hidden sm:block">Intelligent Wealth & Analytics</p>
+              <p className="text-xs text-white/40 hidden sm:block">Intelligent Wealth & Predictive Analytics</p>
             </div>
           </Link>
         </div>
@@ -45,17 +56,17 @@ export default function Navbar() {
         {/* Search Bar */}
         <div className="hidden md:flex items-center flex-1 max-w-md mx-8">
           <div className="relative w-full">
-            <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400" />
+            <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-white/40" />
             <input
               type="text"
               placeholder="Search transactions, assets, budgets (⌘K)..."
-              className="w-full rounded-xl border border-slate-800 bg-slate-900/80 pl-10 pr-4 py-2 text-sm text-slate-200 placeholder-slate-500 transition-all focus:border-indigo-500 focus:bg-slate-900 focus:outline-none focus:ring-2 focus:ring-indigo-500/20"
+              className="w-full rounded-xl border border-white/10 bg-white/5 pl-10 pr-4 py-2 text-sm text-white placeholder-white/30 transition-all focus:border-[#A855F7] focus:bg-black/60 focus:outline-none focus:ring-2 focus:ring-[#A855F7]/20"
             />
           </div>
         </div>
 
         {/* Right Actions */}
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2 sm:gap-3">
           {/* Security Status indicator */}
           <div className="hidden lg:flex items-center gap-1.5 rounded-lg bg-emerald-500/10 px-2.5 py-1 text-xs font-medium text-emerald-400 border border-emerald-500/20">
             <ShieldCheck className="h-3.5 w-3.5" />
@@ -65,10 +76,10 @@ export default function Navbar() {
           {/* Home Link */}
           <Link
             href="/"
-            className="hidden sm:flex items-center gap-1.5 rounded-xl border border-slate-800 bg-slate-900/60 px-3 py-2 text-xs font-medium text-slate-300 hover:text-white hover:border-slate-700 transition-colors"
+            className="flex items-center gap-1.5 rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-xs font-medium text-white/80 hover:text-white hover:border-white/20 transition-colors"
           >
             <ArrowLeft className="h-3.5 w-3.5" />
-            <span>Landing</span>
+            <span className="hidden sm:inline">Landing</span>
           </Link>
 
           {/* Notifications Button */}
@@ -76,12 +87,12 @@ export default function Navbar() {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={() => setHasNotifications(false)}
-            className="relative flex h-10 w-10 items-center justify-center rounded-xl border border-slate-800 bg-slate-900/80 text-slate-300 transition-colors hover:border-slate-700 hover:text-white"
+            className="relative flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-white/70 transition-colors hover:border-white/20 hover:text-white"
             aria-label="View notifications"
           >
             <Bell className="h-4 w-4" />
             {hasNotifications && (
-              <span className="absolute top-2 right-2 h-2 w-2 rounded-full bg-indigo-500 ring-2 ring-slate-950 animate-pulse" />
+              <span className="absolute top-2 right-2 h-2 w-2 rounded-full bg-[#A855F7] ring-2 ring-black animate-pulse shadow-[0_0_8px_rgba(168,85,247,0.8)]" />
             )}
           </motion.button>
 
@@ -91,18 +102,25 @@ export default function Navbar() {
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               onClick={() => setShowProfileMenu(!showProfileMenu)}
-              className="flex items-center gap-2.5 rounded-xl border border-slate-800 bg-slate-900/60 p-1.5 pr-3 text-left transition-colors hover:border-slate-700"
+              className="flex items-center gap-2 sm:gap-2.5 rounded-xl border border-white/10 bg-white/5 p-1.5 pr-2.5 sm:pr-3 text-left transition-colors hover:border-white/20"
             >
-              <img
-                src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80"
-                alt="Profile"
-                className="h-7 w-7 rounded-lg object-cover ring-1 ring-slate-700"
-              />
-              <div className="hidden sm:block">
-                <p className="text-xs font-medium text-slate-200 leading-none">Sophia Brooks</p>
-                <p className="text-[10px] text-slate-400 mt-0.5">Executive Tier</p>
+              <div className="h-7 w-7 rounded-lg overflow-hidden relative ring-1 ring-white/20 shrink-0">
+                <Image
+                  src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80"
+                  alt="Profile avatar"
+                  width={28}
+                  height={28}
+                  className="h-full w-full object-cover"
+                />
               </div>
-              <ChevronDown className="h-3.5 w-3.5 text-slate-400 hidden sm:block" />
+              <div className="hidden sm:block">
+                <p className="text-xs font-semibold text-white leading-none">Sophia Brooks</p>
+                <p className="text-[10px] text-white/40 mt-0.5 flex items-center gap-1">
+                  <Sparkles size={10} className="text-[#A855F7]" />
+                  <span>Executive Tier</span>
+                </p>
+              </div>
+              <ChevronDown className="h-3.5 w-3.5 text-white/40 hidden sm:block" />
             </motion.button>
 
             {/* Profile Dropdown Menu */}
@@ -113,23 +131,23 @@ export default function Navbar() {
                   animate={{ opacity: 1, y: 0, scale: 1 }}
                   exit={{ opacity: 0, y: 8, scale: 0.95 }}
                   transition={{ duration: 0.15 }}
-                  className="absolute right-0 mt-2 w-48 rounded-xl border border-slate-800 bg-slate-900/95 p-1.5 shadow-2xl backdrop-blur-xl z-50"
+                  className="absolute right-0 mt-2 w-52 rounded-2xl border border-white/15 bg-[#0e121e]/95 p-2 shadow-2xl backdrop-blur-2xl z-50"
                 >
-                  <div className="px-3 py-2 border-b border-slate-800">
+                  <div className="px-3 py-2.5 border-b border-white/10">
                     <p className="text-xs font-bold text-white">Sophia Brooks</p>
-                    <p className="text-[10px] text-slate-400">sophia.brooks@apexfinance.com</p>
+                    <p className="text-[10px] text-white/50 truncate">sophia.brooks@apexfinance.com</p>
                   </div>
                   <div className="py-1">
                     <button
                       onClick={() => setShowProfileMenu(false)}
-                      className="flex w-full items-center gap-2 rounded-lg px-3 py-2 text-xs text-slate-300 hover:bg-slate-800 hover:text-white transition-colors"
+                      className="flex w-full items-center gap-2 rounded-xl px-3 py-2 text-xs text-white/80 hover:bg-white/10 hover:text-white transition-colors"
                     >
-                      <User className="h-3.5 w-3.5 text-indigo-400" />
+                      <User className="h-3.5 w-3.5 text-[#c084fc]" />
                       <span>Account Profile</span>
                     </button>
                     <button
                       onClick={handleSignOut}
-                      className="flex w-full items-center gap-2 rounded-lg px-3 py-2 text-xs text-rose-400 hover:bg-rose-500/10 transition-colors"
+                      className="flex w-full items-center gap-2 rounded-xl px-3 py-2 text-xs text-rose-400 hover:bg-rose-500/10 transition-colors"
                     >
                       <LogOut className="h-3.5 w-3.5" />
                       <span>Sign Out</span>

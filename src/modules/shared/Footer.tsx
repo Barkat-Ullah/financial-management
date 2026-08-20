@@ -1,11 +1,17 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import Link from "next/link";
 import { motion } from "framer-motion";
 
 export default function Footer({ className }: { className?: string }) {
   const [activeBadge, setActiveBadge] = useState<number>(-1);
-  const socialLinks = ["Webflow", "Framer", "Dribbble", "Behance", "Facebook", "LinkedIn"];
+  const socialLinks = [
+    { label: "Twitter / X", href: "https://twitter.com" },
+    { label: "LinkedIn", href: "https://linkedin.com" },
+    { label: "GitHub", href: "https://github.com" },
+    { label: "Discord", href: "https://discord.com" },
+  ];
 
   const badges = [
     { name: "\uD83C\uDDF8\uD83C\uDDEC Singapore", left: "11%", top: "38%", flareX: 190 },
@@ -154,37 +160,73 @@ export default function Footer({ className }: { className?: string }) {
 
           <div className="max-w-[1440px] mx-auto grid grid-cols-2 md:grid-cols-4 gap-12">
             <div>
-              <h4 className="text-white text-[15px] font-semibold mb-6">Instant Links</h4>
+              <h4 className="text-white text-[15px] font-semibold mb-6">Platform</h4>
               <ul className="space-y-3">
-                {["Home", "About Us", "Projects", "Pricing"].map((link: string) => (
-                  <li key={link} className="text-[#AAA] text-[14px] hover:text-white transition-colors cursor-pointer leading-loose">{link}</li>
+                {[
+                  { label: "Home", href: "/" },
+                  { label: "Features", href: "#features" },
+                  { label: "How It Works", href: "#how-it-works" },
+                  { label: "Live Dashboard", href: "/dashboard" },
+                ].map((item) => (
+                  <li key={item.label}>
+                    <Link href={item.href} className="text-[#AAA] text-[14px] hover:text-[#c084fc] transition-colors leading-loose">
+                      {item.label}
+                    </Link>
+                  </li>
                 ))}
               </ul>
             </div>
 
             <div>
-              <h4 className="text-white text-[15px] font-semibold mb-6">Services</h4>
+              <h4 className="text-white text-[15px] font-semibold mb-6">Solutions</h4>
               <ul className="space-y-3">
-                {["UI/UX Design", "Web Development", "Framer Development", "Webflow Development"].map((link: string) => (
-                  <li key={link} className="text-[#AAA] text-[14px] hover:text-white transition-colors cursor-pointer leading-loose">{link}</li>
+                {[
+                  { label: "Security & Encryption", href: "#security" },
+                  { label: "Global Money Transfers", href: "#global" },
+                  { label: "Why Choose Us", href: "#why-choose" },
+                  { label: "Pricing Plans", href: "#pricing" },
+                ].map((item) => (
+                  <li key={item.label}>
+                    <Link href={item.href} className="text-[#AAA] text-[14px] hover:text-[#c084fc] transition-colors leading-loose">
+                      {item.label}
+                    </Link>
+                  </li>
                 ))}
               </ul>
             </div>
 
             <div>
-              <h4 className="text-white text-[15px] font-semibold mb-6">Explore Now</h4>
+              <h4 className="text-white text-[15px] font-semibold mb-6">Account</h4>
               <ul className="space-y-3">
-                {["Blogs", "License", "Contact Us", "Case Study"].map((link: string) => (
-                  <li key={link} className="text-[#AAA] text-[14px] hover:text-white transition-colors cursor-pointer leading-loose">{link}</li>
+                {[
+                  { label: "Sign In", href: "/login" },
+                  { label: "Create Free Account", href: "/signup" },
+                  { label: "1-Click Demo Login", href: "/login" },
+                  { label: "User Reviews", href: "#testimonials" },
+                ].map((item) => (
+                  <li key={item.label}>
+                    <Link href={item.href} className="text-[#AAA] text-[14px] hover:text-[#c084fc] transition-colors leading-loose">
+                      {item.label}
+                    </Link>
+                  </li>
                 ))}
               </ul>
             </div>
 
             <div>
-              <h4 className="text-white text-[15px] font-semibold mb-6">Specialized Industry</h4>
+              <h4 className="text-white text-[15px] font-semibold mb-6">Support & Help</h4>
               <ul className="space-y-3">
-                {["Tech & SaaS", "E-commerce & Retail", "Healthcare & Medical", "Creative Agency"].map((link: string) => (
-                  <li key={link} className="text-[#AAA] text-[14px] hover:text-white transition-colors cursor-pointer leading-loose">{link}</li>
+                {[
+                  { label: "Frequently Asked Questions", href: "#faq" },
+                  { label: "Security Whitepaper", href: "#security" },
+                  { label: "System Status: Operational", href: "/dashboard" },
+                  { label: "Privacy & GDPR Policy", href: "#security" },
+                ].map((item) => (
+                  <li key={item.label}>
+                    <Link href={item.href} className="text-[#AAA] text-[14px] hover:text-[#c084fc] transition-colors leading-loose">
+                      {item.label}
+                    </Link>
+                  </li>
                 ))}
               </ul>
             </div>
@@ -192,22 +234,31 @@ export default function Footer({ className }: { className?: string }) {
 
           {/* SECTION 3: SOCIAL BUTTONS */}
           <div className="max-w-[1440px] mx-auto mt-16 flex flex-wrap items-center gap-3">
-            {socialLinks.map((label: string, i: number) => (
-              <motion.button
-                key={i}
-                whileHover={{ backgroundColor: "rgba(255,255,255,0.05)", borderColor: "#666" }}
-                className="px-7 py-3 border border-[#444] rounded-md text-white text-[14px] font-medium transition-colors"
+            {socialLinks.map((item) => (
+              <a
+                key={item.label}
+                href={item.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-7 py-3 border border-[#444] rounded-xl text-white text-[14px] font-medium transition-all hover:bg-white/5 hover:border-[#A855F7]/50"
               >
-                {label}
-              </motion.button>
+                {item.label}
+              </a>
             ))}
           </div>
         </div>
 
         {/* SECTION 4: COPYRIGHT BAR */}
         <div className="w-full">
-          <div className="border-t border-dashed border-[#2A2A2A]" />
-          <div className="max-w-[1440px] mx-auto px-10 md:px-16 py-6 flex flex-col md:flex-row justify-between items-center gap-4" />
+          <div className="border-t border-[#2A2A2A]" />
+          <div className="max-w-[1440px] mx-auto px-10 md:px-16 py-6 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-[#777]">
+            <p>&copy; {new Date().getFullYear()} Velara AI Inc. All rights reserved.</p>
+            <div className="flex items-center gap-6">
+              <Link href="#security" className="hover:text-white transition-colors">Privacy Policy</Link>
+              <Link href="#security" className="hover:text-white transition-colors">Terms of Service</Link>
+              <Link href="#security" className="hover:text-white transition-colors">Security Standards</Link>
+            </div>
+          </div>
         </div>
 
         {/* SECTION 5: LARGE BRAND TEXT */}

@@ -86,7 +86,10 @@ export default function WhyChooseUs({ className }: { className?: string }) {
       <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
-      <section className={"bg-black py-20 px-6 md:px-[60px] font-['Inter',_sans-serif] relative overflow-hidden " + (className || "")}>
+      <section
+        id="why-choose"
+        className={"bg-black py-20 px-6 md:px-[60px] font-['Inter',_sans-serif] relative overflow-hidden scroll-mt-20 " + (className || "")}
+      >
         {/* BACKGROUND ACCENTS */}
         <div className="absolute top-0 left-0 w-full h-full pointer-events-none overflow-hidden">
           <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-white/5 blur-[120px] rounded-full" />

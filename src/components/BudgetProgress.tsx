@@ -23,39 +23,39 @@ export default function BudgetProgress() {
       initial={{ opacity: 0, scale: 0.95 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.4, delay: 0.2 }}
-      className="glass-panel rounded-2xl p-6 shadow-xl"
+      className="glass-panel rounded-2xl p-6 shadow-xl border border-white/10"
     >
       <div className="flex items-center justify-between mb-4">
         <div className="flex items-center gap-2">
-          <PieChart className="h-4 w-4 text-indigo-400" />
-          <h2 className="text-sm font-bold uppercase tracking-wider text-slate-300">
+          <PieChart className="h-4 w-4 text-[#c084fc]" />
+          <h2 className="text-sm font-bold uppercase tracking-wider text-white">
             Monthly Budgets
           </h2>
         </div>
-        <span className="text-xs font-semibold text-indigo-400">
+        <span className="text-xs font-bold text-[#c084fc]">
           {overallPercentage}% utilized
         </span>
       </div>
 
       {/* Overall Progress Gauge Bar */}
-      <div className="mb-6 rounded-xl bg-slate-900/80 p-3.5 border border-slate-800">
+      <div className="mb-6 rounded-xl bg-white/5 p-3.5 border border-white/10">
         <div className="flex items-center justify-between text-xs mb-2">
-          <span className="text-slate-400">Overall Monthly Spending</span>
+          <span className="text-white/50">Overall Monthly Allocation</span>
           <span className="font-bold text-white">
             {formatCurrency(totalSpent)} / {formatCurrency(totalAllocated)}
           </span>
         </div>
-        <div className="h-2.5 w-full rounded-full bg-slate-800 overflow-hidden">
+        <div className="h-2.5 w-full rounded-full bg-white/10 overflow-hidden">
           <motion.div
             initial={{ width: 0 }}
             animate={{ width: `${overallPercentage}%` }}
             transition={{ duration: 0.8, ease: "easeOut" }}
             className={`h-full rounded-full ${
               overallPercentage > 90
-                ? "bg-rose-500"
+                ? "bg-rose-500 shadow-[0_0_10px_rgba(244,63,94,0.5)]"
                 : overallPercentage > 75
-                ? "bg-amber-500"
-                : "bg-gradient-to-r from-indigo-500 to-emerald-400"
+                ? "bg-amber-500 shadow-[0_0_10px_rgba(245,158,11,0.5)]"
+                : "bg-gradient-to-r from-[#A855F7] to-emerald-400 shadow-[0_0_10px_rgba(168,85,247,0.5)]"
             }`}
           />
         </div>
@@ -71,24 +71,24 @@ export default function BudgetProgress() {
             <div key={cat.id} className="group">
               <div className="flex items-center justify-between text-xs mb-1.5">
                 <div className="flex items-center gap-2">
-                  <div className="flex h-6 w-6 items-center justify-center rounded-lg bg-slate-800 text-slate-300">
+                  <div className="flex h-6 w-6 items-center justify-center rounded-lg bg-white/10 text-white/80">
                     {categoryIconMap[cat.icon] || <ShoppingBag className="h-3.5 w-3.5" />}
                   </div>
-                  <span className="font-semibold text-slate-200">{cat.name}</span>
+                  <span className="font-semibold text-white/90">{cat.name}</span>
                   {isNearLimit && (
                     <AlertCircle className="h-3.5 w-3.5 text-amber-400" />
                   )}
                 </div>
                 <div className="text-right">
-                  <span className="font-bold text-slate-200">
+                  <span className="font-bold text-white">
                     {formatCurrency(cat.spent)}
                   </span>
-                  <span className="text-slate-500"> / {formatCurrency(cat.allocated)}</span>
+                  <span className="text-white/40"> / {formatCurrency(cat.allocated)}</span>
                 </div>
               </div>
 
               {/* Individual category bar */}
-              <div className="h-2 w-full rounded-full bg-slate-800 overflow-hidden">
+              <div className="h-2 w-full rounded-full bg-white/10 overflow-hidden">
                 <motion.div
                   initial={{ width: 0 }}
                   animate={{ width: `${Math.min(pct, 100)}%` }}

@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { monthlyTrends, MonthlyDataPoint } from "@/lib/data";
 import { formatCurrency } from "@/lib/utils";
-import { BarChart3, TrendingUp, Calendar } from "lucide-react";
+import { BarChart3, TrendingUp, Calendar, Sparkles } from "lucide-react";
 
 export default function ExpenseChart() {
   const [activeTab, setActiveTab] = useState<"comparison" | "savings">("comparison");
@@ -17,52 +17,52 @@ export default function ExpenseChart() {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: 0.2 }}
-      className="glass-panel rounded-2xl p-6 shadow-xl"
+      className="glass-panel rounded-2xl p-6 shadow-xl border border-white/10"
     >
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-800/80 pb-5">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-white/10 pb-5">
         <div>
           <div className="flex items-center gap-2">
-            <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-indigo-500/10 text-indigo-400">
+            <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-[#A855F7]/15 text-[#c084fc]">
               <BarChart3 className="h-4 w-4" />
             </div>
             <h2 className="text-lg font-bold text-white tracking-tight">Cashflow & Savings Performance</h2>
           </div>
-          <p className="text-xs text-slate-400 mt-1">
-            Real-time monthly income vs expense analytics
+          <p className="text-xs text-white/40 mt-1">
+            Real-time monthly revenue vs expense analytics
           </p>
         </div>
 
         {/* Tab Selector */}
-        <div className="flex items-center rounded-xl bg-slate-900/90 p-1 border border-slate-800">
+        <div className="flex items-center rounded-xl bg-white/5 p-1 border border-white/10">
           <button
             onClick={() => setActiveTab("comparison")}
             className={`relative rounded-lg px-3 py-1.5 text-xs font-semibold transition-colors ${
-              activeTab === "comparison" ? "text-white" : "text-slate-400 hover:text-slate-200"
+              activeTab === "comparison" ? "text-white" : "text-white/50 hover:text-white"
             }`}
           >
             {activeTab === "comparison" && (
               <motion.div
                 layoutId="chartTab"
-                className="absolute inset-0 rounded-lg bg-indigo-600 shadow-sm"
+                className="absolute inset-0 rounded-lg bg-[#A855F7] shadow-sm"
                 transition={{ type: "spring", stiffness: 400, damping: 30 }}
               />
             )}
-            <span className="relative z-10">Income vs Expense</span>
+            <span className="relative z-10">Revenue vs Expense</span>
           </button>
           <button
             onClick={() => setActiveTab("savings")}
             className={`relative rounded-lg px-3 py-1.5 text-xs font-semibold transition-colors ${
-              activeTab === "savings" ? "text-white" : "text-slate-400 hover:text-slate-200"
+              activeTab === "savings" ? "text-white" : "text-white/50 hover:text-white"
             }`}
           >
             {activeTab === "savings" && (
               <motion.div
                 layoutId="chartTab"
-                className="absolute inset-0 rounded-lg bg-indigo-600 shadow-sm"
+                className="absolute inset-0 rounded-lg bg-[#A855F7] shadow-sm"
                 transition={{ type: "spring", stiffness: 400, damping: 30 }}
               />
             )}
-            <span className="relative z-10">Net Savings Trend</span>
+            <span className="relative z-10">Net Surplus Trend</span>
           </button>
         </div>
       </div>
@@ -73,30 +73,30 @@ export default function ExpenseChart() {
           {activeTab === "comparison" ? (
             <>
               <div className="flex items-center gap-1.5">
-                <span className="h-3 w-3 rounded-full bg-emerald-500" />
-                <span className="text-slate-300">Income</span>
+                <span className="h-3 w-3 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.5)]" />
+                <span className="text-white/80">Revenue</span>
               </div>
               <div className="flex items-center gap-1.5">
-                <span className="h-3 w-3 rounded-full bg-indigo-500" />
-                <span className="text-slate-300">Expense</span>
+                <span className="h-3 w-3 rounded-full bg-[#A855F7] shadow-[0_0_8px_rgba(168,85,247,0.5)]" />
+                <span className="text-white/80">Expense</span>
               </div>
             </>
           ) : (
             <div className="flex items-center gap-1.5">
-              <span className="h-3 w-3 rounded-full bg-gradient-to-r from-indigo-500 to-purple-500" />
-              <span className="text-slate-300">Net Surplus</span>
+              <span className="h-3 w-3 rounded-full bg-gradient-to-r from-[#A855F7] to-[#c084fc] shadow-[0_0_8px_rgba(168,85,247,0.5)]" />
+              <span className="text-white/80">Net Surplus Retention</span>
             </div>
           )}
         </div>
 
-        <div className="flex items-center gap-2 text-xs text-slate-400">
+        <div className="flex items-center gap-2 text-xs text-white/40">
           <Calendar className="h-3.5 w-3.5" />
           <span>Jan - Jun 2026</span>
         </div>
       </div>
 
       {/* Bar Chart Visualization */}
-      <div className="mt-6 flex h-60 items-end justify-between gap-3 sm:gap-6 pt-6 px-2">
+      <div className="mt-6 flex h-60 items-end justify-between gap-2 sm:gap-6 pt-6 px-2">
         {monthlyTrends.map((item, index) => {
           const incomeHeight = (item.income / maxVal) * 100;
           const expenseHeight = (item.expense / maxVal) * 100;
@@ -114,33 +114,33 @@ export default function ExpenseChart() {
                 <motion.div
                   initial={{ opacity: 0, y: -6, scale: 0.95 }}
                   animate={{ opacity: 1, y: -12, scale: 1 }}
-                  className="absolute -top-12 z-30 rounded-lg bg-slate-900 border border-slate-700 px-2.5 py-1 text-center shadow-2xl pointer-events-none whitespace-nowrap"
+                  className="absolute -top-12 z-30 rounded-xl bg-[#090d16] border border-white/20 px-3 py-1.5 text-center shadow-2xl pointer-events-none whitespace-nowrap"
                 >
                   <p className="text-[11px] font-bold text-white">{item.month} 2026</p>
                   <p className="text-[10px] text-emerald-400">
                     +{formatCurrency(item.income)}
                   </p>
-                  <p className="text-[10px] text-indigo-300">
+                  <p className="text-[10px] text-[#c084fc]">
                     -{formatCurrency(item.expense)}
                   </p>
                 </motion.div>
               )}
 
               {/* Bars */}
-              <div className="flex w-full items-end justify-center gap-1.5 h-full">
+              <div className="flex w-full items-end justify-center gap-1 sm:gap-1.5 h-full">
                 {activeTab === "comparison" ? (
                   <>
                     <motion.div
                       initial={{ height: 0 }}
                       animate={{ height: `${incomeHeight}%` }}
                       transition={{ duration: 0.6, delay: index * 0.08, ease: "easeOut" }}
-                      className="w-full max-w-[18px] rounded-t-md bg-gradient-to-t from-emerald-600 to-emerald-400 transition-all group-hover:brightness-125"
+                      className="w-full max-w-[18px] rounded-t-md bg-gradient-to-t from-emerald-600 to-emerald-400 transition-all group-hover:brightness-125 shadow-[0_0_15px_rgba(16,185,129,0.2)]"
                     />
                     <motion.div
                       initial={{ height: 0 }}
                       animate={{ height: `${expenseHeight}%` }}
                       transition={{ duration: 0.6, delay: index * 0.08 + 0.1, ease: "easeOut" }}
-                      className="w-full max-w-[18px] rounded-t-md bg-gradient-to-t from-indigo-600 to-indigo-400 transition-all group-hover:brightness-125"
+                      className="w-full max-w-[18px] rounded-t-md bg-gradient-to-t from-[#7E22CE] to-[#A855F7] transition-all group-hover:brightness-125 shadow-[0_0_15px_rgba(168,85,247,0.2)]"
                     />
                   </>
                 ) : (
@@ -148,13 +148,13 @@ export default function ExpenseChart() {
                     initial={{ height: 0 }}
                     animate={{ height: `${savingsHeight}%` }}
                     transition={{ duration: 0.6, delay: index * 0.08, ease: "easeOut" }}
-                    className="w-full max-w-[28px] rounded-t-md bg-gradient-to-t from-indigo-600 via-purple-600 to-pink-500 transition-all group-hover:brightness-125"
+                    className="w-full max-w-[28px] rounded-t-md bg-gradient-to-t from-[#7E22CE] via-[#A855F7] to-[#c084fc] transition-all group-hover:brightness-125 shadow-[0_0_20px_rgba(168,85,247,0.4)]"
                   />
                 )}
               </div>
 
               {/* Month label */}
-              <span className="mt-3 text-xs font-semibold text-slate-400 transition-colors group-hover:text-white">
+              <span className="mt-3 text-xs font-semibold text-white/40 transition-colors group-hover:text-white">
                 {item.month}
               </span>
             </div>
@@ -163,19 +163,20 @@ export default function ExpenseChart() {
       </div>
 
       {/* Summary card below chart */}
-      <div className="mt-6 flex flex-col sm:flex-row items-center justify-between rounded-xl bg-slate-900/60 border border-slate-800/80 p-4">
+      <div className="mt-6 flex flex-col sm:flex-row items-center justify-between rounded-xl bg-white/[0.03] border border-white/10 p-4">
         <div className="flex items-center gap-3">
-          <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-emerald-500/10 text-emerald-400">
+          <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-emerald-500/15 text-emerald-400">
             <TrendingUp className="h-5 w-5" />
           </div>
           <div>
-            <p className="text-xs font-semibold text-white">Savings Efficiency Up 24.8%</p>
-            <p className="text-[11px] text-slate-400">Average savings retention increased to $8,430/mo</p>
+            <p className="text-xs font-semibold text-white">Savings Efficiency Up 28.4%</p>
+            <p className="text-[11px] text-white/40">Average savings retention increased to $13,630/mo</p>
           </div>
         </div>
         <div className="mt-3 sm:mt-0 text-right">
-          <span className="inline-flex items-center gap-1 rounded-full bg-indigo-500/10 px-3 py-1 text-xs font-medium text-indigo-400 border border-indigo-500/20">
-            AI Budget Recommendation Ready
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-[#A855F7]/15 px-3 py-1 text-xs font-semibold text-[#c084fc] border border-[#A855F7]/30">
+            <Sparkles className="h-3 w-3" />
+            AI Predictive Yield Active
           </span>
         </div>
       </div>

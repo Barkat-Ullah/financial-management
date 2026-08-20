@@ -37,9 +37,11 @@ export default function FAQ({ className }: { className?: string }) {
     <>
       <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" crossOrigin="anonymous" />
-
-      <section className={"bg-black py-[96px] px-6 md:px-[60px] font-sans relative overflow-hidden " + (className || "")} style={{ fontFamily: "'Inter', sans-serif" }}>
+      <section
+        id="faq"
+        className={"bg-black py-[96px] px-6 md:px-[60px] font-sans relative overflow-hidden scroll-mt-20 " + (className || "")}
+        style={{ fontFamily: "'Inter', sans-serif" }}
+      >
         {/* Ambient Glow */}
         <div className="absolute top-0 left-0 w-full h-full pointer-events-none">
           <div className="absolute top-1/2 left-0 -translate-y-1/2 w-[500px] h-[500px] bg-[#A855F7]/5 blur-[120px] rounded-full" />

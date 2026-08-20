@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { Lock, Bell, ArrowRight, ChevronRight } from "lucide-react";
 
@@ -12,7 +13,8 @@ export default function Features({ className }: { className?: string }) {
       <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
       <section
-        className={"bg-black py-[90px] px-6 md:px-[60px] font-sans relative overflow-hidden " + (className || "")}
+        id="features"
+        className={"bg-black py-[90px] px-6 md:px-[60px] font-sans relative overflow-hidden scroll-mt-20 " + (className || "")}
         style={{ fontFamily: "'Inter', sans-serif" }}
       >
         {/* BACKGROUND ACCENTS */}
@@ -39,13 +41,13 @@ export default function Features({ className }: { className?: string }) {
               </p>
             </div>
 
-            <motion.button
-              whileHover={{ scale: 1.02, backgroundColor: "#f0f0f0" }}
-              whileTap={{ scale: 0.98 }}
-              className="px-8 py-3.5 bg-white text-[#0a0a0a] text-[14px] font-medium border-none rounded-full flex items-center gap-2 transition-all self-start md:self-end shadow-xl"
+            <Link
+              href="/dashboard"
+              className="px-8 py-3.5 bg-white text-[#0a0a0a] text-[14px] font-medium border-none rounded-full flex items-center gap-2 transition-all self-start md:self-end shadow-xl hover:bg-white/90 hover:scale-105 active:scale-95"
             >
-              Explore Features <ArrowRight size={16} />
-            </motion.button>
+              <span>Explore Live Dashboard</span>
+              <ArrowRight size={16} />
+            </Link>
           </header>
 
           {/* BENTO GRID */}
